@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@omnigame/core": "github:omnigame-dev/core",
+    "jimp": "^0.16.1"
+  }
+}

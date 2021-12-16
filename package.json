@@ -1,7 +1,27 @@
 {
+    "name": "ricochetbot",
+    "version": "0.0.1",
+    "description": "PoC for Ricochet Robots game to play on Slack in your team.",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/filipgorczynski/synapps.ricochetbot"
+    },
+    "author": "Filip Górczyński",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/filipgorczynski/synapps.ricochetbot/issues"
+    },
     "dependencies": {
+        "@slack/bolt": "^3.8.1",
         "@slack/web-api": "^6.5.1",
+        "body-parser": "^1.19.1",
         "dotenv": "^10.0.0",
-        "node-cron": "^3.0.0"
+        "express": "^4.17.1",
+        "node-cron": "^3.0.0",
+        "nodemon": "^2.0.15"
     }
 }
