@@ -1,21 +1,30 @@
 'use strict';
 
 require('dotenv').config();
-const { WebClient } = require('@slack/web-api');
+const fs = require('fs');
+const { WebClient, LogLevel } = require('@slack/web-api');
 const channel = 'general';
-const currentTime = new Date().toTimeString();
+const web = new WebClient(process.env.SLACK_API_TOKEN, {
+    // LogLevel can be imported and used to make debugging simpler
+    logLevel: LogLevel.DEBUG
+  });
+const fileName = "./laolmieuzij61.png";
 
-console.log('Getting started with Node Slack SDK');
-
-const web = new WebClient(process.env.SLACK_API_TOKEN)
 
 async function Main() {
     try {
-        await web.chat.postMessage({
-            channel: `#${channel}`,
-            text: `The current time is ${currentTime}`,
+        const uploadResult = await web.files.upload({
+            channels: channel,
+            initial_comment: "Today\'s puzzle :smile:",
+            file: fs.createReadStream(fileName)
         });
-        console.log('Message posted!');
+        console.log(uploadResult);
+        // await web.chat.postMessage({
+        //     channel: `#${channel}`,
+        //     type: 'mrkdwn',
+        //     text: 'Today\'s puzzle: https://i.imgur.com/aBumn1S.jpeg',
+        // });
+        // console.log('Message posted!');
     } catch (error) {
         console.log(error);
     }
